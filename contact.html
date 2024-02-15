@@ -79,6 +79,80 @@
     <!-- end header section -->
   </div>
 
+
+<!-- Payment Form Section -->
+<section class="payment_form_section" style="background-color: #222; padding: 60px 0;">
+  <div class="container">
+      <div class="heading_container">
+          <h2 style="text-align: center; margin-bottom: 30px; color: #fff;">Make Payment</h2>
+      </div>
+      <div class="payment_form" style="max-width: 400px; margin: 0 auto;">
+          <form id="paymentForm" action="/pay" method="POST" style="background-color: #3e2723; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
+              <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="tel" name="phone" placeholder="Phone Number" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="number" name="amount" placeholder="Amount" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <!-- Bank Details -->
+              <select id="bankSelect" name="bank_name" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+                  <option value="" selected disabled>Select Bank</option>
+                  <option value="Access Bank">Access Bank</option>
+                  <option value="First Bank">First Bank</option>
+                  <option value="Zenith Bank">Zenith Bank</option>
+                  <option value="Guaranty Trust Bank (GTBank)">Guaranty Trust Bank (GTBank)</option>
+                  <option value="United Bank for Africa (UBA)">United Bank for Africa (UBA)</option>
+                  <option value="Fidelity Bank">Fidelity Bank</option>
+                  <option value="Union Bank">Union Bank</option>
+                  <option value="Stanbic IBTC Bank">Stanbic IBTC Bank</option>
+                  <option value="Ecobank Nigeria">Ecobank Nigeria</option>
+                  <option value="Sterling Bank">Sterling Bank</option>
+                  <option value="Other">Other (Please specify)</option>
+              </select>
+              <input id="otherBankInput" type="text" name="other_bank" placeholder="Enter Bank Name" style="display: none; width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="text" name="account_number" placeholder="Account Number" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <!-- End Bank Details -->
+              <input type="text" name="card_number" placeholder="Card Number" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="text" name="expiry_date" placeholder="Expiry Date (MM/YY)" required style="width: 48%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="text" name="cvv" placeholder="CVV" required style="width: 48%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <input type="text" name="billing_address" placeholder="Billing Address" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #fff; border-radius: 5px;">
+              <button type="button" onclick="makePayment()" style="width: 100%; padding: 15px; background-color: #5D4037; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Make Payment</button>
+          </form>
+      </div>
+  </div>
+</section>
+<!-- End Payment Form Section -->
+
+<!-- Thank You Response -->
+<section id="thankYouSection" style="display: none; text-align: center; padding: 40px 0; background-color: #3e2723;">
+  <h3 style="color: #5D4037;">Thank you for your payment!</h3>
+  <p style="color: #fff;">We appreciate your business.</p>
+</section>
+<!-- End Thank You Response -->
+
+<script>
+  function makePayment() {
+      // Simulate payment processing (replace this with actual payment processing)
+      setTimeout(function() {
+          // Hide payment form
+          document.getElementById('paymentForm').style.display = 'none';
+          // Show thank you message
+          document.getElementById('thankYouSection').style.display = 'block';
+      }, 2000); // Simulating a 2-second delay for processing
+  }
+
+  // JavaScript to show/hide other bank input field
+  document.getElementById('bankSelect').addEventListener('change', function() {
+      var otherBankInput = document.getElementById('otherBankInput');
+      if (this.value === 'Other') {
+          otherBankInput.style.display = 'block';
+          otherBankInput.setAttribute('required', 'true');
+      } else {
+          otherBankInput.style.display = 'none';
+          otherBankInput.removeAttribute('required');
+      }
+  });
+</script>
+
+
+
   <!-- contact section -->
 
   <section class="contact_section layout_padding">
@@ -126,6 +200,8 @@
 
 
   <!-- end contact section -->
+
+
 
 
   <!-- info section -->
@@ -290,6 +366,6 @@
   </script>
   <!-- end owl carousel script -->
 
-</body>
+</body>" 
 
 </html>
